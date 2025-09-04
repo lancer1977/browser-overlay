@@ -1,0 +1,38 @@
+{
+  "name": "browser-overlay",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "browser",
+    "overlay"
+  ],
+  "homepage": "https://github.com/lancer1977/browser-overlay#readme",
+  "bugs": {
+    "url": "https://github.com/lancer1977/browser-overlay/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lancer1977/browser-overlay.git"
+  },
+  "license": "ISC",
+  "author": "Polyhydra Games",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "ts-node main.js",
+    "build": "ng build",
+    "electron": "electron .",
+    "electron-build": "ng build --prod"
+  },
+  "devDependencies": {
+    "@electron/fuses": "^1.8.0",
+    "@types/electron": "^1.4.38",
+    "@types/node": "^24.0.1",
+    "electron": "^36.7.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.1"
+  }
+}
