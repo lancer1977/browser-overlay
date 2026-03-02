@@ -1,38 +1,84 @@
 {
-  "name": "browser-overlay",
+  "name": "cc-browser-overlay",
   "version": "1.0.0",
-  "description": "",
+  "description": "A transparent, always-on-top browser overlay for streaming and chat viewing",
   "keywords": [
     "browser",
-    "overlay"
+    "overlay",
+    "streaming",
+    "chat",
+    "electron",
+    "transparent"
   ],
-  "homepage": "https://github.com/lancer1977/browser-overlay#readme",
+  "homepage": "https://github.com/lancer1977/cc-browser-overlay#readme",
   "bugs": {
-    "url": "https://github.com/lancer1977/browser-overlay/issues"
+    "url": "https://github.com/lancer1977/cc-browser-overlay/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lancer1977/browser-overlay.git"
+    "url": "git+https://github.com/lancer1977/cc-browser-overlay.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "author": "Polyhydra Games",
-  "main": "main.js",
+  "main": "dist/main.js",
   "scripts": {
-    "start": "electron .",
-    "dev": "ts-node main.js",
-    "build": "ng build",
+    "start": "npm run build && electron .",
+    "dev": "ts-node src/main.ts",
+    "build": "npm run build:ts && npm run build:static",
+    "build:ts": "tsc",
+    "build:static": "node scripts/copy-static.mjs",
     "electron": "electron .",
-    "electron-build": "ng build --prod"
+    "electron-build": "npm run build && electron .",
+    "dist": "npm run build && electron-builder --publish never",
+    "release": "npm run build && electron-builder --publish always",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "@electron/fuses": "^1.8.0",
     "@types/electron": "^1.4.38",
     "@types/node": "^24.0.1",
     "electron": "^36.7.1",
+    "electron-builder": "^24.13.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "build": {
+    "appId": "com.polyhydragames.ccbrowseroverlay",
+    "productName": "CC Browser Overlay",
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "category": "public.app-category.utilities"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Utility"
+    },
+    "publish": [
+      {
+        "provider": "github"
+      }
+    ]
   }
 }
