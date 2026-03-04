@@ -1,5 +1,8 @@
 # CC Browser Overlay
 
+**Vault Project:** `~/vaults/polyhydra/20_Projects/cc-browser-overlay`
+
+
 A transparent, always-on-top browser overlay for streaming and chat viewing. Built with Electron, this application creates a seamless overlay window that can display web content while allowing mouse passthrough.
 
 ## Features
